@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`My App Component should render correctly with default props and redux store 1`] = `ShallowWrapper {}`;
+
+exports[`My Footer Component should render correctly with default props and redux store 1`] = `ShallowWrapper {}`;

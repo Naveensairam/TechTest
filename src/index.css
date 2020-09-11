@@ -1,0 +1,97 @@
+body{
+  background-color:#eee;
+}
+
+#app{
+  border-radius:3px;
+  border: 1px solid #e5e5e5;
+  margin:15px;
+  background-color:white;
+}
+
+.tab{
+  /* min-height:50px; */
+  width:100%;
+  padding:25px;
+  font-family:sans-serif;
+  color:#444;
+}
+
+ul.inline{
+  list-style:none;
+  padding: 0;
+  margin-bottom:0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0px;
+   background: #f8f9fa;
+    border-bottom: 1px solid #ced4da;
+}
+  li{
+    display:inline-block;
+    margin-left:0;
+    padding:10px;
+    border-bottom:2px solid #eee;
+    transition: all .5s;
+    font-family:sans-serif;
+    font-weight:300;
+    cursor:pointer;
+    color:#aaa;
+  }
+    .selected{
+      border-bottom:2px solid #337ab7;
+      color:#444;
+    }
+
+    .inputDisplay{
+      display: inline-block;
+      padding: 10px;
+    }
+    .inputBox{
+      width: 10%;
+      text-align: center;
+      margin-right: 10px;
+      border-color:  #D3D3D3;
+      background-color: #ffffff;
+      /* border-style: solid; */
+      border-width: 0.2px;
+    }
+    .generate{
+      background-color: #ffffff;
+      color: #00CCFF;
+      border-color:  #00CCFF;
+      border-style: solid;
+      border-width: 2px;
+    }
+    
+    .generate.active.focus, .generate.active:focus, .generate.focus, .generate:active.focus, .generate:active:focus, .generate:focus {
+      outline: 0;
+  }
+  .save.active.focus, .save.active:focus, .save.focus, .save:active.focus, .save:active:focus, .save:focus {
+    outline: 0;
+}
+    .save{
+      background-color: #00CCFF;
+      color: #FFFFFF;
+      border-color:  #00CCFF;
+      border-style: solid;
+      border-width: 2px;
+    }
+    .deleteButton{
+      background-color: red;
+      color: #ffffff;
+      border-color: red;
+      border-style: solid;
+      border-width: 2px;
+    }
+    .nameButton{
+      margin-right:10px;
+      text-align: center;
+      margin-right: 10px;
+      border-color:  #D3D3D3;
+      background-color: #ffffff;
+      border-width: 0.2px;
+    }
+  
