@@ -17,19 +17,42 @@ const Generate = (props) => {
         var charactersLength = characters.length;
         for (var i = 0; i < 4; i++) {
             let res = characters.charAt(Math.floor(Math.random() * charactersLength));
-            let find = result.substring(result.length - 1);
-            debugger; 
-            if (parseInt(find) === parseInt(res)) {
-                result += ++res;
-            } else {
-                result += res;
+            let find;
+            if (result.length > 1) {
+                find = result.substring(result.length - 1);
+            }
+            else {
+                find = result;
+            }
+            let incrementVal = find;
+            ++incrementVal;
+            let decrementVal = find - 1;
+            if (parseInt(find) === parseInt(res)) {//A PIN cannot have 2 consecutive digits be the same
+                ++res;
+                ++res;
+                result += res.toString().length > 1 ? res.toString().substring(1) : res;
+            }
+            else if (parseInt(res) === parseInt(decrementVal)) { // descending
+                ++res;
+                ++res;
+                ++res;
+                result += res.toString().length > 1 ? res.toString().substring(1) : res;
+            }
+            else if (parseInt(res) === parseInt(incrementVal)) { // ascending
+                ++res;
+                ++res;
+                result += res.toString().length > 1 ? res.toString().substring(1) : res;
+            }
+
+            else {
+                result += res.toString().length > 1 ? res.toString().substring(1) : res;
             }
 
         }
         return result;
     }
     const buttonClick = () => {
-        let names = ['James', 'Paul', 'John', 'George', 'Ringo'];
+        let names = ['Inputbox1', 'Inputbox2', 'Inputbox3', 'Inputbox4', 'Inputbox5'];
         const code =
             <div className="inputDisplay">
                 {
@@ -45,25 +68,38 @@ const Generate = (props) => {
         setCode(code);
     }
     const onSaveClick = () => {
+        debugger;
+        let getProps = props.pinCodes;
+        let arr = [];
         var getCode = generateCode;
         getCode = Object.entries(generateCode);
-        if (getCode.length > 0) {
-            let getProps = props.pinCodes;
-            let arr = [];
-            for (var key in getProps) {
-                arr.push(getProps[key]);
+        for (var key in getProps) {
+            arr.push(getProps[key]);
+        }
+        let savedItem;
+        debugger;
+        if (getProps && getCode.length > 0) {
+            for (var key in arr) {
+                savedItem = arr[key].props.children.find(x => x.props.value === generateCode.props.children[0].props.value)
             }
-            arr.push(generateCode);
-            for (var keyArray in arr) {
-                let clone = Object.assign({}, arr[keyArray]);
-                clone.key = parseInt(keyArray);
-                arr[keyArray] = clone;
-            }
-            props.savePinsList(arr);
-            props.saved();
+        }
+        if (savedItem) {
+            alert("Any 5 PIN combination is not allowed to be saved more than once");
         }
         else {
-            alert("Please generate code before saving");
+            if (getCode.length > 0) {
+                arr.push(generateCode);
+                for (var keyArray in arr) {
+                    let clone = Object.assign({}, arr[keyArray]);
+                    clone.key = parseInt(keyArray);
+                    arr[keyArray] = clone;
+                }
+                props.savePinsList(arr);
+                props.saved();
+            }
+            else {
+                alert("Please generate code before saving");
+            }
         }
     }
     return (
