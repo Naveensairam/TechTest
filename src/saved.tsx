@@ -5,12 +5,21 @@ import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
-const Saved = (props) => {
-    let arr = [];
+
+type Props = {
+    pinCodes: any,
+    savePinsList: any,
+    // generateCode: any,
+    // setCode: any,
+    saved:any,
+}
+const Saved: React.FC<Props> = ({ savePinsList, pinCodes, saved }) => {
+    // const Saved = (props) => {
+    let arr = new Array();
     const onHandleChange = () => {
 
     }
-    const onNameHandleChange = (event) => {
+    const onNameHandleChange = (event: any) => {
         var find = arr.find(x => x.key === parseInt(event.target.id));
         var getData = find;
         const getIndex = arr.indexOf(find);
@@ -19,28 +28,28 @@ const Saved = (props) => {
         }
         getData.name = event.target.value;
         arr.splice(getIndex, 0, getData);
-        props.savePinsList(arr);
+        savePinsList(arr);
     }
-    const onDeleteClick = (index) => {
+    const onDeleteClick = (index: any) => {
         var find = arr.find(x => x.key === index);
         const getIndex = arr.indexOf(find);
         if (getIndex > -1) {
             arr.splice(getIndex, 1);
         }
-        props.savePinsList(arr);
+        savePinsList(arr);
     }
-    for (var key in props.pinCodes) {
-        arr.push(props.pinCodes[key]);
+    for (var key in pinCodes) {
+        arr.push(pinCodes[key]);
     }
     return (
         <div className="container">
             {
-                arr.length > 0 ? arr.map((name, index) => (
+                arr.length > 0 ? arr.map((name: any, index: any) => (
                     <div key={index} className="inputDisplay">
                         <input className="nameButton" id={index} placeholder="Name" type="text" value={name.name ? name.name : ""} onChange={onNameHandleChange}></input>
                         {
-                            name.props.children.map((name, index) => (
-                                <input type="text" className="inputBox"
+                            name.props.children.map((name: any, index: any) => (
+                                <input type="text" key={index} className="inputBox"
                                     value={name.props.value} onChange={onHandleChange} />
 
                             ))
@@ -51,15 +60,15 @@ const Saved = (props) => {
         </div>
     )
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
     return {
         pinCodes: state
     }
 
 }
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: any) => {
     return {
-        savePinsList: (params) => dispatch(savePinsList(params))
+        savePinsList: (params: any) => dispatch(savePinsList(params))
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Saved)

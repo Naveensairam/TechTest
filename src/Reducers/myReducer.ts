@@ -1,9 +1,9 @@
 import { SAVE_LIST } from "../Action/myAction";
 // let pinCodes = [];
-function userDataReducer(state, action) {
+function userDataReducer(state: any, action: any) {
     switch (action.type) {
         case SAVE_LIST:
-             return {
+            return {
                 ...action.state,
             }
         default:
