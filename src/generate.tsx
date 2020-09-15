@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from "react-redux";
 import { savePinsList } from "./Action/myAction";
 import { configure } from 'enzyme';
@@ -88,8 +88,8 @@ class Generate extends React.Component<Props, MyState> {
         }
         let savedItem;
         if (getProps && getCode.length > 0) {
-            for (var key in arr) {
-                savedItem = arr[key].props.children.find((x: any) => x.props.value === this.state.generateCode.props.children[0].props.value)
+            for (var keyPlus in arr) {
+                savedItem = arr[keyPlus].props.children.find((x: any) => x.props.value === this.state.generateCode.props.children[0].props.value)
             }
         }
         if (savedItem) {

@@ -9,13 +9,10 @@ configure({ adapter: new Adapter() });
 type Props = {
     pinCodes: any,
     savePinsList: any,
-    // generateCode: any,
-    // setCode: any,
     saved:any,
 }
 const Saved: React.FC<Props> = ({ savePinsList, pinCodes, saved }) => {
-    // const Saved = (props) => {
-    let arr = new Array();
+    let arr:Array<any> = [];
     const onHandleChange = () => {
 
     }
