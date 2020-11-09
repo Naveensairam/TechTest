@@ -62,6 +62,7 @@ class Generate extends React.Component<Props, MyState> {
 
         }
         return result;
+        // return "1111"
     }
     buttonClick = () => {
         let names = ['Inputbox1', 'Inputbox2', 'Inputbox3', 'Inputbox4', 'Inputbox5'];
@@ -79,7 +80,6 @@ class Generate extends React.Component<Props, MyState> {
         this.setState({ generateCode: code });
     }
     onSaveClick = () => {
-        debugger;
         let getProps = this.props.pinCodes;
         let arr = [];
         var getCode = this.state.generateCode;
