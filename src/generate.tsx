@@ -36,9 +36,9 @@ class Generate extends React.Component<Props, MyState> {
             else {
                 find = parseInt(result);
             }
-            let incrementVal: number = find;
+            let incrementVal: number = find - 1;
             ++incrementVal;
-            let decrementVal: number = find - 1;
+            let decrementVal: number = find - 2;
             if (find === res) {//A PIN cannot have 2 consecutive digits be the same
                 ++res;
                 ++res;
@@ -79,6 +79,7 @@ class Generate extends React.Component<Props, MyState> {
         this.setState({ generateCode: code });
     }
     onSaveClick = () => {
+        debugger;
         let getProps = this.props.pinCodes;
         let arr = [];
         var getCode = this.state.generateCode;
@@ -89,7 +90,11 @@ class Generate extends React.Component<Props, MyState> {
         let savedItem;
         if (getProps && getCode.length > 0) {
             for (var keyPlus in arr) {
-                savedItem = arr[keyPlus].props.children.find((x: any) => x.props.value === this.state.generateCode.props.children[0].props.value)
+                savedItem = arr[keyPlus].props.children.find((x: any) => x.props.value === this.state.generateCode.props.children[0].props.value && 
+                x.props.value === this.state.generateCode.props.children[1].props.value
+                && x.props.value === this.state.generateCode.props.children[2].props.value
+                && x.props.value === this.state.generateCode.props.children[3].props.value
+                && x.props.value === this.state.generateCode.props.children[4].props.value)
             }
         }
         if (savedItem) {
