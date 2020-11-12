@@ -70,7 +70,7 @@ class Generate extends React.Component<Props, MyState> {
             <div className="inputDisplay">
                 {
                     names.map((name) => (
-                        <input type="text" className="inputBox"
+                        <input type="text" className="inputBox" aria-label="pin-input"
                             value={this.result()}
                             onChange={this.onHandleChange} />
 

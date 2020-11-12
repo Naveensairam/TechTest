@@ -43,7 +43,7 @@ const Saved: React.FC<Props> = ({ savePinsList, pinCodes, saved }) => {
             {
                 arr.length > 0 ? arr.map((name: any, index: any) => (
                     <div key={index} className="inputDisplay">
-                        <input className="nameButton" id={index} placeholder="Name" type="text" value={name.name ? name.name : ""} onChange={onNameHandleChange}></input>
+                        <input className="nameButton" id={index} placeholder="Name" aria-label="pin-input" type="text" value={name.name ? name.name : ""} onChange={onNameHandleChange}></input>
                         {
                             name.props.children.map((name: any, index: any) => (
                                 <input type="text" key={index} className="inputBox"
